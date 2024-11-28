@@ -1,0 +1,27 @@
+﻿@model Ebook8.Models.thankyou
+
+<h4>thankyou</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="thankyou">
+            <div class="container mt-5">
+                <h2>Thank You for Your Order!</h2>
+                <hr />
+                <p>Your order has been successfully placed. We will deliver it within this week.</p>
+                <p>We appreciate your business!</p>
+
+                <!-- Optionally, provide a link to navigate to the home page or main menu -->
+                <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Back to Home</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

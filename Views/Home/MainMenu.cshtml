@@ -1,0 +1,36 @@
+﻿<div class="container mt-5">
+    <h2>Main Menu</h2>
+    <hr />
+    <div class="row">
+        @foreach (var MainMenu in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-primary">
+                    <!-- Product Image -->
+                    <img src="@MainMenu.ImageUrl" class="card-img-top" alt="@MainMenu.Name" style="height: 200px; object-fit: cover;" />
+
+                    <div class="card-body">
+                        <!-- Product Name -->
+                        <h5 class="card-title">@MainMenu.Name</h5>
+
+                        <!-- Product Description -->
+                        <p class="card-text text-muted">@MainMenu.Description</p>
+
+                        <!-- Product Price -->
+                        <h6 class="text-primary">$@MainMenu.Price.ToString("F2")</h6>
+
+                        <!-- Add to Cart Button -->
+                        <form asp-action="AddToCart" asp-controller="Cart" method="post">
+                            <input type="hidden" name="productId" value="@MainMenu.Id" />
+                            <button type="submit" class="btn btn-primary w-100">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

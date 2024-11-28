@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to eBooks LTD</h1>
+</div>
+<div class="container mt-5">
+    <h2>Books</h2>
+    <hr />
+    <div class="row">
+        @foreach (var Book1 in Model)
+        {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <!-- Book1 Image -->
+                        <img src="@Book1.ImageUrl" class="card-img-top" alt="@Book1.Name" style="height: 200px; object-fit: cover;" />
+
+                        <div class="card-body">
+                            <!-- Book1 Name -->
+                            <h5 class="card-title">@Book1.Name</h5>
+
+                            <!-- Book1 Description -->
+                            <p class="card-text text-muted">@Book1.Description</p>
+
+                            <!-- Book1 Price -->
+                            <h6 class="text-primary">$@Book1.Price.ToString("F2")</h6>
+
+                            <!-- Add to Cart Button -->
+                        <!-- Link to OrderConfirmation page using a button-style appearance -->
+                        <a href="@Url.Action("orderconfirmation")" btn btn-primary w-100">Add to Cart</a>
+
+                        </div>
+                    </div>
+                </div>
+        }
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
